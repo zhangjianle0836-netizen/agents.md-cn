@@ -1,6 +1,7 @@
 import React from "react";
 import ClipboardIcon from "./icons/ClipboardIcon";
 import CopyIcon from "./icons/CopyIcon";
+import { useTranslation } from "@/utils/i18n";
 
 interface CodeExampleProps {
   /** Markdown content to display; falls back to default example if not provided */
@@ -19,17 +20,38 @@ interface CodeExampleProps {
   centerVertically?: boolean;
 }
 
-export const HERO_AGENTS_MD = `# AGENTS.md
+/**
+ * Generate localized hero example markdown
+ */
+export function getHeroMarkdown(t: any) {
+  const ex = t.codeExamples;
+  
+  return `# ${ex.heroTitle}
 
-## Setup commands
-- Install deps: \`pnpm install\`
-- Start dev server: \`pnpm dev\`
-- Run tests: \`pnpm test\`
+## ${ex.heroSetupCommands}
+${ex.heroSetupList.map((tip: string) => `- ${tip}`).join('\n')}
 
-## Code style
-- TypeScript strict mode
-- Single quotes, no semicolons
-- Use functional patterns where possible`;
+## ${ex.heroCodeStyle}
+${ex.heroCodeStyleList.map((tip: string) => `- ${tip}`).join('\n')}`;
+}
+
+/**
+ * Generate localized example markdown (for large code block)
+ */
+function getExampleMarkdown(t: any) {
+  const ex = t.codeExamples;
+  
+  return `# ${ex.sampleTitle}
+
+## ${ex.devTips}
+${ex.devTipsList.map((tip: string) => `- ${tip}`).join('\n')}
+
+## ${ex.testingInstructions}
+${ex.testingList.map((tip: string) => `- ${tip}`).join('\n')}
+
+## ${ex.prInstructions}
+${ex.prList.map((tip: string) => `- ${tip}`).join('\n')}`;
+}
 
 const EXAMPLE_AGENTS_MD = `# Sample AGENTS.md file
 
@@ -130,7 +152,8 @@ export default function CodeExample({
   heightClass,
   centerVertically = false,
 }: CodeExampleProps) {
-  const md = code ?? EXAMPLE_AGENTS_MD;
+  const { t } = useTranslation();
+  const md = code ?? getExampleMarkdown(t);
   const [copied, setCopied] = React.useState(false);
 
   const copyToClipboard = async () => {
@@ -198,7 +221,7 @@ export default function CodeExample({
     <section className="px-6 pt-10 pb-24 bg-gray-50 dark:bg-gray-900/40">
       <div className="max-w-5xl mx-auto flex flex-col gap-6">
         <h2 className="text-3xl font-semibold tracking-tight">
-          AGENTS.md in action
+          {t.codeExamples.inAction}
         </h2>
         {content}
       </div>

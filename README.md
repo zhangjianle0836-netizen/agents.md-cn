@@ -2,6 +2,19 @@
 
 ![AGENTS.md logo](./public/og.png)
 
+> **📢 说明 / Notice**  
+> 
+> 🇨🇳 **本项目是 [AGENTS.md](https://github.com/agentsmd/agents.md) 的中文汉化版本**  
+> 我们对原项目进行了完整的中文本地化，包括网站界面、文档和示例内容。  
+> 
+> 🇺🇸 **This is a Chinese localization of [AGENTS.md](https://github.com/agentsmd/agents.md)**  
+> We have fully localized the original project into Chinese, including the website interface, documentation, and example content.  
+> 
+> ⚖️ 原项目采用 MIT License，版权归 © 2025 OpenAI 所有。  
+> Original project is licensed under MIT License, © 2025 OpenAI.  
+> 
+> 📖 [查看中文版 README](./README-CN.md) | [View English README](./README.md)
+
 [AGENTS.md](https://agents.md) is a simple, open format for guiding coding agents.
 
 Think of AGENTS.md as a README for agents: a dedicated, predictable place

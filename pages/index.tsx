@@ -9,6 +9,7 @@ import CompatibilitySection from "@/components/CompatibilitySection";
 import { GetStaticProps } from "next";
 import WhySection from "@/components/WhySection";
 import AboutSection from "@/components/AboutSection";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface LandingPageProps {
   contributorsByRepo: Record<string, { avatars: string[]; total: number }>;
@@ -17,6 +18,7 @@ interface LandingPageProps {
 export default function LandingPage({ contributorsByRepo }: LandingPageProps) {
   return (
     <div className="flex flex-col min-h-screen items-stretch font-sans">
+      <LanguageSwitcher />
       <main>
         <Hero />
         <WhySection />

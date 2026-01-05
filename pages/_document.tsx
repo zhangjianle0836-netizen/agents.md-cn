@@ -1,8 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { getLocale } from "@/utils/i18n";
 
 export default function Document() {
+  const locale = getLocale();
+  const htmlLang = locale === "zh-CN" ? "zh-CN" : "en";
+  
   return (
-    <Html lang="en">
+    <Html lang={htmlLang}>
       <Head>
         <link
           rel="icon"
